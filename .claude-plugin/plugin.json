@@ -1,0 +1,8 @@
+{
+  "name": "claude-skills",
+  "version": "1.0.0",
+  "description": "Skills for general tasks",
+  "author": {
+    "name": "skill-engineers"
+  }
+}
