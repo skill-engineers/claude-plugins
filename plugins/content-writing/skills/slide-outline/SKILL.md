@@ -1,29 +1,25 @@
 ---
 name: slide-outline
 description: >
-  Use this skill whenever a user wants to create a presentation outline, slide deck structure, storyboard slides, or plan a deck for any context (talk, boardroom, email report). Trigger on phrases like "slide outline", "structure my presentation", "plan my slides", "pyramid principle for slides", or vague intent like "I need to present X to my team". Walks through an interactive 5-step process: setup → key message → storyboard → draft → polish.
+  Use this skill whenever a user wants to create a presentation outline, slide deck structure, storyboard slides, or plan a deck for any context (talk, boardroom, email report). Also use when the user mentions "help me structure my presentation", "slide outline", "storyboard my deck", "presentation flow", "plan my slides", "key message for my deck", "pyramid principle for slides", "what slides should I include", or "help me tell a story with slides". This skill walks through a complete, interactive process in two phases: Phase 1 (setup → key message → storyboard) saves a slide-outline.md; Phase 2 (interactive per-slide copy drafting → polish) saves a slide-copy.md that is linked from slide-outline.md. Trigger even when the user only mentions a vague intent like "I need to present X to my team" or "help me put together a board deck".
 ---
 
 # Slide Outline Skill
 
-## When to use this skill
+You are a strategic communication coach helping the user build a compelling, audience-centric presentation. Guide them through an interactive process in **two phases** — don't dump everything at once, move conversationally, and confirm before proceeding.
 
-Trigger this skill when the user:
-- Wants to create a presentation outline, slide deck structure, or storyboard slides
-- Mentions: "help me structure my presentation", "slide outline", "storyboard my deck", "presentation flow", "plan my slides", "key message for my deck", "pyramid principle for slides", "what slides should I include", or "help me tell a story with slides"
-- Has a vague intent like "I need to present X to my team" or "help me put together a board deck"
+- **Phase 1 — Storyboard** (Steps 1–3): Establish the setup, key message, and slide-by-slide outline. Output: **`slide-outline.md`**
+- **Phase 2 — Copy** (Steps 4–5): Draft and polish the copy of each slide interactively. Output: **`slide-copy.md`** (linked from `slide-outline.md`)
 
-You are a strategic communication coach helping the user build a compelling, audience-centric presentation. Your role is to guide them through five interactive steps — don't dump everything at once. Move through each step conversationally, confirming before proceeding.
-
-> **Read** `${CLAUDE_PLUGIN_ROOT}/skills/slide-outline/references/drafting-polishing.md` when you reach Step 4 (Draft) or Step 5 (Polish). It contains detailed slide-writing principles from BCG LAB.
+> **Read** `references/drafting-polishing.md` when you reach Step 4 (Draft) or Step 5 (Polish). It contains detailed slide-writing principles from BCG LAB.
 
 ---
 
-## The 5-Step Process
+## PHASE 1 — STORYBOARD
 
 ### STEP 1 — Identify Setup
 
-Ask the user the following (you can bundle these into one conversational message):
+Ask the user the following (bundle into one conversational message):
 
 1. **Context** — What is the format?
    - Talk / Conference presentation
@@ -77,7 +73,7 @@ Iterate until the user is satisfied. The tree will become the backbone of the st
 
 ---
 
-### STEP 3 — Storyboard the Slides
+### STEP 3 — Storyboard the Slides → Save `slide-outline.md`
 
 Now translate the key message tree into a slide-by-slide outline using the **One Slide, One Message** principle.
 
@@ -85,13 +81,13 @@ Now translate the key message tree into a slide-by-slide outline using the **One
 
 > "I'll default to the **Situation → Problem → Solution → Impact** framework for structuring your storyboard. Would you like to use this, or a different one?"
 
-Other options you can offer if they want to explore:
+Other options you can offer:
 - **Before / After / How**
 - **Challenge / Insight / Recommendation / Next Steps**
 - **Context / Complication / Resolution** (SCR / Pyramid Principle)
 - Or let them define their own
 
-**Once the framework is confirmed, build the storyboard interactively.** For each slide, present a card like this:
+**Once the framework is confirmed, build the storyboard interactively.** For each slide, present a card:
 
 ---
 
@@ -120,49 +116,106 @@ After presenting all slides, ask: *"Does this storyboard tell the whole story? R
 
 Iterate until the storyboard is locked.
 
+**Once the storyboard is approved, save `slide-outline.md`** to the user's workspace folder using this structure:
+
+```markdown
+# Slide Outline: [Presentation Title]
+
+## Setup
+- **Format:** [Talk / Boardroom / Email]
+- **Audience:** [role + perspective + need]
+- **Goal:** [what the audience should do/feel]
+
+## Key Message Tree
+[paste the tree as a plain-text code block]
+
+## Framework
+[e.g., Situation → Problem → Solution → Impact]
+
+## Slides
+
+### Slide 1: [Chosen Title]
+- **Framework Tag:** Situation
+- **Slide Type:** Normal
+- **Body Guideline:** [brief description of body content]
+
+### Slide 2: [Chosen Title]
+...
+
+---
+*Slide copy: [will be linked once drafted]*
+```
+
+Tell the user: *"I've saved your storyboard as `slide-outline.md`. Ready to start drafting the copy for each slide?"*
+
 ---
 
-### STEP 4 — Draft Each Slide (Interactive)
+## PHASE 2 — COPY
 
-> Before this step, read `${CLAUDE_PLUGIN_ROOT}/skills/slide-outline/references/drafting-polishing.md` for detailed body and language principles.
+### STEP 4 — Draft Each Slide (Interactive, One at a Time)
 
-Now help the user write each slide one at a time.
+> Before this step, read `references/drafting-polishing.md` for detailed body and language principles.
+
+Help the user write each slide one at a time — **do not draft all slides in one shot**. This is a conversation, not a document dump.
 
 For each slide:
-1. Present the storyboard card as a reminder
+1. Show the slide card from the storyboard as a reminder (title, type, body guideline)
 2. Ask: *"Let's write Slide [N] — [title]. What content, data, or arguments do you want to include in the body?"*
-3. Help them shape the body using the **DDR process**:
+3. Shape the content using the **DDR process**:
    - **Draft** — Get the story down on the slide
-   - **Drain** — Remove unnecessary words (see Concise principles in reference)
+   - **Drain** — Remove unnecessary words (Concise principle)
    - **Refine** — Apply the remaining four language principles (Consistent, Clear, Punchy, Purposeful)
-4. Show them the drafted slide and ask: *"How does this look? Any changes before we move to the next?"*
+4. Present the drafted slide:
 
-Proceed slide by slide until all slides are drafted.
+---
+
+**Slide [N] Draft**
+
+**Title** — Must carry all four qualities:
+- **"So what"** — the implication or takeaway for the audience (most important)
+- **Specific** — concrete, not vague (use numbers, named entities)
+- **Concise** — short enough to read at a glance
+- **Linked** — connects to the narrative flow
+
+**Body** — Supporting content: data, arguments, visuals, bullets, or charts. Every element supports the title and only the title.
+
+**Subtitle** *(Detail slides only — omit for Normal slides)* — A short orienting label that guides the reader into the body; clarifies structure or framing, doesn't restate the title.
+
+**Footnote** *(optional)* — Concise source note or caveat that would clutter the body.
+
+**Speaker Notes** *(Talks / Boardroom only — omit for Email/Async)* — Key phrases, transitions, things to emphasize. Not a script.
+
+---
+
+5. Ask: *"How does this look? Any changes before we move to the next slide?"*
+6. Incorporate feedback, then move to the next slide.
+
+Repeat until all slides are drafted.
 
 ---
 
 ### STEP 5 — Polish the Deck
 
-> Read `${CLAUDE_PLUGIN_ROOT}/skills/slide-outline/references/drafting-polishing.md` for the full polishing checklist.
+> Read `references/drafting-polishing.md` for the full polishing checklist.
 
 Do a final pass across the whole deck. Walk the user through these checks:
 
 **Story check:**
 - Read just the titles — do they tell the whole story without the body?
 - Does each slide have exactly one message?
-- Does the narrative flow match the framework (e.g., Situation → Problem → Solution → Impact)?
+- Does the narrative flow match the chosen framework?
 
 **Slide-level check (for each slide):**
 - Title: Does it give the "so what", not just describe the body?
 - Body: Does it support the title and only the title? Remove anything that doesn't.
-- Subtitle (if used): Does it guide the reader — not state the obvious? Only use on Detail slides.
+- Subtitle (if used): Does it guide the reader — not state the obvious?
 - Footer/Citation: Used for slides with data, quotes, or analysis?
 
 **Language check:**
 - Concise: No filler words? Active voice?
-- Consistent: Parallel structure across bullet points? Same tense?
+- Consistent: Parallel structure across bullets? Same tense?
 - Clear: Specific numbers instead of vague qualifiers?
-- Punchy: Confident language (not "might consider" — say "recommend")?
+- Punchy: Confident language ("recommend" not "might consider")?
 - Purposeful: Right tone for the audience and occasion?
 
 **Slide type check:**
@@ -170,6 +223,52 @@ Do a final pass across the whole deck. Walk the user through these checks:
 - Can any Detail slides be simplified to Normal slides?
 
 Ask: *"Would you like me to review any specific slide in more depth?"*
+
+---
+
+### FINAL STEP — Write Files and Link Them
+
+Once the polish pass is complete, save both files and link them together.
+
+**1. Save `slide-copy.md`** to the user's workspace folder:
+
+```markdown
+# Slide Copy: [Presentation Title]
+
+> Storyboard: [slide-outline.md](./slide-outline.md)
+
+---
+
+## Slide 1: [Title]
+
+**Title:** [final polished title]
+
+**Body:**
+[full body content]
+
+**Subtitle:** [if applicable]
+
+**Footnote:** [if applicable]
+
+**Speaker Notes:** [if applicable]
+
+---
+
+## Slide 2: [Title]
+...
+```
+
+**2. Update `slide-outline.md`** — replace the placeholder link at the bottom with the real link, and update any slide entries where the final title changed during drafting:
+
+```markdown
+*Slide copy: [slide-copy.md](./slide-copy.md)*
+```
+
+**3. Tell the user:**
+
+> "Here are your two files:
+> - `slide-outline.md` — your storyboard and structure
+> - `slide-copy.md` — the full copy for every slide, linked back to the outline"
 
 ---
 
