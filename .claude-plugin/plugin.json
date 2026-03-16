@@ -1,5 +1,5 @@
 {
-  "name": "claude-plugins",
+  "name": "general-plugins",
   "version": "1.0.0",
   "description": "A marketplace of Claude Code plugins for general tasks",
   "author": {
