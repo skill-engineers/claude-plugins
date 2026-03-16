@@ -13,7 +13,7 @@
       "name": "content-writing",
       "source": "./plugins/content-writing",
       "description": "Content writing plugin with slide outline planning skill for structuring compelling presentations and decks.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "Nishant"
       },
