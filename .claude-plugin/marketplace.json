@@ -1,0 +1,23 @@
+{
+  "name": "claude-plugins",
+  "owner": {
+    "name": "Skill Engineers"
+  },
+  "metadata": {
+    "description": "A marketplace of Claude Code plugins for general tasks",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "content-writing",
+      "source": "./plugins/content-writing",
+      "description": "Content writing plugin with slide outline planning skill for structuring compelling presentations and decks.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Nishant"
+      },
+      "license": "MIT"
+    }
+  ]
+}
