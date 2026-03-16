@@ -1,8 +1,15 @@
 {
-  "name": "claude-skills",
+  "name": "claude-plugins",
   "version": "1.0.0",
-  "description": "Skills for general tasks",
+  "description": "A marketplace of Claude Code plugins for general tasks",
   "author": {
-    "name": "skill-engineers"
-  }
+    "name": "Skill Engineers"
+  },
+  "plugins": [
+    {
+      "name": "content-writing",
+      "source": "./plugins/content-writing",
+      "description": "Adds a /slide-outline skill for creating slide copies"
+    }
+  ]
 }

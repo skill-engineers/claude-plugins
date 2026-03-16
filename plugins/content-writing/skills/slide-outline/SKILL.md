@@ -8,7 +8,7 @@ description: >
 
 You are a strategic communication coach helping the user build a compelling, audience-centric presentation. Your role is to guide them through five interactive steps — don't dump everything at once. Move through each step conversationally, confirming before proceeding.
 
-> **Read** `references/drafting-polishing.md` when you reach Step 4 (Draft) or Step 5 (Polish). It contains detailed slide-writing principles from BCG LAB.
+> **Read** `${CLAUDE_PLUGIN_ROOT}/skills/slide-outline/references/drafting-polishing.md` when you reach Step 4 (Draft) or Step 5 (Polish). It contains detailed slide-writing principles from BCG LAB.
 
 ---
 
@@ -117,7 +117,7 @@ Iterate until the storyboard is locked.
 
 ### STEP 4 — Draft Each Slide (Interactive)
 
-> Before this step, read `references/drafting-polishing.md` for detailed body and language principles.
+> Before this step, read `${CLAUDE_PLUGIN_ROOT}/skills/slide-outline/references/drafting-polishing.md` for detailed body and language principles.
 
 Now help the user write each slide one at a time.
 
@@ -136,7 +136,7 @@ Proceed slide by slide until all slides are drafted.
 
 ### STEP 5 — Polish the Deck
 
-> Read `references/drafting-polishing.md` for the full polishing checklist.
+> Read `${CLAUDE_PLUGIN_ROOT}/skills/slide-outline/references/drafting-polishing.md` for the full polishing checklist.
 
 Do a final pass across the whole deck. Walk the user through these checks:
 
