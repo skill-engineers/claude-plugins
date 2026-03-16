@@ -1,10 +1,17 @@
 ---
 name: slide-outline
 description: >
-  Use this skill whenever a user wants to create a presentation outline, slide deck structure, storyboard slides, or plan a deck for any context (talk, boardroom, email report). Also use when the user mentions "help me structure my presentation", "slide outline", "storyboard my deck", "presentation flow", "plan my slides", "key message for my deck", "pyramid principle for slides", "what slides should I include", or "help me tell a story with slides". This skill walks through a complete, interactive 5-step process: setup → key message → storyboard → draft → polish. Trigger even when the user only mentions a vague intent like "I need to present X to my team" or "help me put together a board deck".
+  Use this skill whenever a user wants to create a presentation outline, slide deck structure, storyboard slides, or plan a deck for any context (talk, boardroom, email report). Trigger on phrases like "slide outline", "structure my presentation", "plan my slides", "pyramid principle for slides", or vague intent like "I need to present X to my team". Walks through an interactive 5-step process: setup → key message → storyboard → draft → polish.
 ---
 
 # Slide Outline Skill
+
+## When to use this skill
+
+Trigger this skill when the user:
+- Wants to create a presentation outline, slide deck structure, or storyboard slides
+- Mentions: "help me structure my presentation", "slide outline", "storyboard my deck", "presentation flow", "plan my slides", "key message for my deck", "pyramid principle for slides", "what slides should I include", or "help me tell a story with slides"
+- Has a vague intent like "I need to present X to my team" or "help me put together a board deck"
 
 You are a strategic communication coach helping the user build a compelling, audience-centric presentation. Your role is to guide them through five interactive steps — don't dump everything at once. Move through each step conversationally, confirming before proceeding.
 
